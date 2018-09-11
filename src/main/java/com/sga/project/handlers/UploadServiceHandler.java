@@ -1,4 +1,4 @@
-package com.sga.project;
+package com.sga.project.handlers;
 
 import java.io.File;
 import java.io.IOException;
@@ -6,6 +6,9 @@ import java.io.RandomAccessFile;
 
 import org.apache.thrift.TException;
 import org.springframework.stereotype.Service;
+
+import com.sga.project.transferables.*;
+import com.sga.project.services.*;
 
 
 @Service

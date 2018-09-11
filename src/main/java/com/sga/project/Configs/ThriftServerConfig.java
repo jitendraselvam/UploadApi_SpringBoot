@@ -1,4 +1,4 @@
-package com.sga.project;
+package com.sga.project.Configs;
 
 import org.apache.thrift.protocol.TBinaryProtocol;
 import org.apache.thrift.protocol.TProtocolFactory;
@@ -11,6 +11,12 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.servlet.DispatcherServlet;
+import com.sga.project.services.*;
+
+import com.sga.project.Configs.DownloadConfig;
+import com.sga.project.Configs.EchoConfig;
+import com.sga.project.Configs.UploadConfig;
+import com.sga.project.handlers.*;
 
 @Configuration
 @SpringBootApplication(exclude=DispatcherServletAutoConfiguration.class)

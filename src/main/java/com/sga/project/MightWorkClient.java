@@ -15,8 +15,8 @@ import org.apache.thrift.protocol.TBinaryProtocol;
 import org.apache.thrift.protocol.TProtocol;
 import org.apache.thrift.transport.THttpClient;
 import org.apache.thrift.transport.TTransportException;
-import com.sga.project.EchoService;
-import com.sga.project.UploadService;
+import com.sga.project.services.*;
+import com.sga.project.transferables.*;
 
 public class MightWorkClient {
 

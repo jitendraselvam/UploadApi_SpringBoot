@@ -1,4 +1,4 @@
-package com.sga.project;
+package com.sga.project.handlers;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -8,6 +8,9 @@ import java.io.RandomAccessFile;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.sga.project.transferables.*;
+import com.sga.project.services.*;
 
 import org.apache.thrift.TException;
 import org.springframework.stereotype.Service;
@@ -20,7 +23,7 @@ public class DownloadServiceHandler implements DownloadService.Iface {
     private ByteBuffer ioBuffer = ByteBuffer.allocate(1024 * 10);
     private Context context;
 	
-	@Override
+    @Override
 	public TransferInfo download(TransferInfo info) throws TException {
 		// TODO Auto-generated method stub
 		switch (info.type) {
@@ -32,9 +35,9 @@ public class DownloadServiceHandler implements DownloadService.Iface {
 
         default:
             throw new TException();
-    }
+		}
 	}
-
+	
 	@Override
 	public List<String> getFileList() throws TException {
 		// TODO Auto-generated method stub
@@ -50,6 +53,7 @@ public class DownloadServiceHandler implements DownloadService.Iface {
         }
         return list;
 	}
+
 	private TransferInfo beginDownload(TransferInfo reqInfo) throws TException {
         TransferInfo recvInfo =  new  TransferInfo ();
         File src = new File(BASE_DIRECTORY, reqInfo.fileName);

@@ -1,10 +1,12 @@
-package com.sga.project;
+package com.sga.project.handlers;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 
 import org.apache.thrift.TException;
 import org.springframework.stereotype.Service;
+import com.sga.project.services.*;
+
 
 @Service
 public class EchoServiceHandler implements EchoService.Iface{

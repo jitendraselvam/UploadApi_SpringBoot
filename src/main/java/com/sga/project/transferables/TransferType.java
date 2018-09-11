@@ -4,7 +4,7 @@
  * DO NOT EDIT UNLESS YOU ARE SURE THAT YOU KNOW WHAT YOU ARE DOING
  *  @generated
  */
-package com.sga.project;
+package com.sga.project.transferables;
 
 
 public enum TransferType implements org.apache.thrift.TEnum {
