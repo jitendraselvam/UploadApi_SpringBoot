@@ -13,6 +13,7 @@ public class EchoServiceHandler implements EchoService.Iface{
 	public String echo(String input) throws TException {
 		// TODO Auto-generated method stub
 		try {
+			System.out.println(input);
             return "from " + InetAddress.getLocalHost().getHostAddress() + " : " + input;
         } catch (UnknownHostException e) {
             throw new TException(e);

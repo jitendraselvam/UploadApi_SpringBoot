@@ -17,6 +17,7 @@ public class UploadServiceHandler implements UploadService.Iface{
 	
 	@Override
 	public void upload(TransferInfo info) throws TException {
+		System.out.println("$%^&$%$&^&#%^%$^&%#$^$%&#^&");
 		switch (info.type) {
         case REQUEST:
             beginUpload(info);
