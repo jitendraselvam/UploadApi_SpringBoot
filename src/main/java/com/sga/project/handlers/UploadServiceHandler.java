@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.io.RandomAccessFile;
 
 import org.apache.thrift.TException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
 import com.sga.project.transferables.*;
@@ -13,6 +15,9 @@ import com.sga.project.services.*;
 
 @Service
 public class UploadServiceHandler implements UploadService.Iface{
+	
+	@Autowired
+    private KafkaTemplate<String, TransferInfo> senderHelper;
 
 	private static final File BASE_DIRECTORY = new File("downloads");
 	
@@ -20,7 +25,6 @@ public class UploadServiceHandler implements UploadService.Iface{
 	
 	@Override
 	public void upload(TransferInfo info) throws TException {
-		System.out.println("$%^&$%$&^&#%^%$^&%#$^$%&#^&");
 		switch (info.type) {
         case REQUEST:
             beginUpload(info);
@@ -61,10 +65,12 @@ public class UploadServiceHandler implements UploadService.Iface{
 	
 	private void progressUpload(TransferInfo info) throws TException {
         try {
+        	senderHelper.send("topic1",info);
             context.raf.getChannel().write(info.data, context.raf.length());
             if (context.file.length() == context.length) {
                 context.raf.close();
             }
+            //senderHelper.send("topic1",context.file.getName());
         } catch (IOException e) {
             try {
                 context.raf.close();
@@ -74,6 +80,7 @@ public class UploadServiceHandler implements UploadService.Iface{
             context.file.delete();
             throw new TException(e);
         }
+        
     }
 	
 	private static class Context {

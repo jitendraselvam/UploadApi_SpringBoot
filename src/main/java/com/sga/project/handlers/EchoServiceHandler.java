@@ -11,6 +11,7 @@ import com.sga.project.services.*;
 @Service
 public class EchoServiceHandler implements EchoService.Iface{
 
+
 	@Override
 	public String echo(String input) throws TException {
 		// TODO Auto-generated method stub
